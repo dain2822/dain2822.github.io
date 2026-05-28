@@ -86,7 +86,7 @@
       .sticky-nav__link { padding: 0.65rem 1.1rem; }
       .sticky-nav__link::after { display: none; }
     }
-    #about, #skills, #projects { scroll-margin-top: 70px; }
+    #about, #competencies, #skills, #projects { scroll-margin-top: 70px; }
 
     /* ===== Fixed Nav (포트폴리오 상세 페이지용) ===== */
     .sp-nav {
@@ -141,7 +141,7 @@
     /* Sections */
     .sp-section { padding: 5rem 0; }
     .sp-section--white { background: #fff; }
-    .sp-section--gray { background: #f7f7f7; }
+    .sp-section--gray { background: #ffffff; }
     .sp-section__title { font-size: 1.6rem; font-weight: 800; color: #313237; margin-bottom: 2.5rem; display: block; text-align: center; }
 
     /* About */
@@ -160,6 +160,14 @@
     .sp-timeline-item__year { font-size: 0.78rem; color: #5b8de3; font-weight: 700; white-space: nowrap; min-width: 80px; padding-top: 0.1rem; }
     .sp-timeline-item__content { font-size: 0.9rem; color: #444; line-height: 1.5; }
 
+    /* Competencies */
+    .sp-comp-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 960px; margin: 0 auto; }
+    @media (min-width: 768px) { .sp-comp-grid { grid-template-columns: repeat(3, 1fr); } }
+    .sp-comp-card { background: #fff; border-radius: 14px; padding: 2rem 1.6rem; border-top: 3px solid #5b8de3; box-shadow: 0 2px 16px rgba(0,0,0,0.05); }
+    .sp-comp-card__num { display: block; font-size: 0.72rem; font-weight: 700; color: #5b8de3; letter-spacing: 0.12em; margin-bottom: 0.9rem; }
+    .sp-comp-card__title { font-size: 1rem; font-weight: 700; color: #1a1a1a; margin-bottom: 0.75rem; }
+    .sp-comp-card__desc { font-size: 0.87rem; color: #666; line-height: 1.75; margin: 0; }
+
     /* Skills */
     .sp-skills { display: flex; flex-wrap: wrap; gap: 0.7rem; justify-content: center; max-width: 700px; margin: 0 auto; }
     .sp-skill-badge { display: inline-block; border: 2px solid #5b8de3; color: #5b8de3; font-size: 0.85rem; font-weight: 600; padding: 0.35rem 1rem; border-radius: 100px; transition: all 0.2s; }
@@ -169,7 +177,7 @@
     .portfolio-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; padding: 0; max-width: 960px; margin: 0 auto; }
     @media (min-width: 768px) { .portfolio-grid { grid-template-columns: repeat(3, 1fr); } }
 
-    /* Portfolio Card — meganmagic 스타일 */
+    /* Portfolio Card */
     .portfolio-card { background: #fff; border-radius: 16px; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; cursor: pointer; }
     .portfolio-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(0,0,0,0.13); }
     .portfolio-card__link { display: flex; flex-direction: column; text-decoration: none; border-bottom: 0; color: inherit; height: 100%; }

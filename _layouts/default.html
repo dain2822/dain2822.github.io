@@ -98,6 +98,22 @@ layout: compress
         </div>
       </section>
 
+      <!-- COMPETENCIES -->
+      <section id="competencies" class="sp-section sp-section--gray">
+        <div class="container">
+          <h2 class="sp-section__title">Competencies</h2>
+          <div class="sp-comp-grid">
+            {% for item in site.competencies %}
+            <div class="sp-comp-card">
+              <span class="sp-comp-card__num">0{{ forloop.index }}</span>
+              <h3 class="sp-comp-card__title">{{ item.title }}</h3>
+              <p class="sp-comp-card__desc">{{ item.description }}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+
       <!-- SKILLS -->
       <section id="skills" class="sp-section sp-section--white">
         <div class="container">
