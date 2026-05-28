@@ -60,6 +60,12 @@ permalink: /:title/
 compress_html:
   clippings: all
 
+collections:
+  portfolio:
+    output: true
+    permalink: /portfolio/:name/
+    sort_by: order
+
 plugins:
   - jekyll-sitemap
   - jekyll-seo-tag

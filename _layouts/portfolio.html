@@ -1,0 +1,76 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<html lang="ko">
+
+  {% include head.html %}
+
+  <body class="site">
+
+    {% include header.html %}
+
+    <div class="hero--small dark-bg">
+      <div class="hero__wrap">
+        <p class="portfolio-detail__number">{{ page.order | prepend: '0' | slice: -2, 2 }}</p>
+        <h1 class="hero__title">{{ page.title }}</h1>
+        <p class="hero__meta">{{ page.subtitle }}</p>
+      </div>
+    </div>
+
+    <main class="site__content">
+      <div class="container">
+        <div class="portfolio-detail">
+
+          <div class="portfolio-detail__info-grid">
+            <div class="portfolio-detail__info-box">
+              <h3>개발 인원 및 기간</h3>
+              <p>인원 : {{ page.team }}</p>
+              <p>기간 : {{ page.period }}</p>
+            </div>
+            <div class="portfolio-detail__info-box">
+              <h3>담당 역할</h3>
+              <p>{{ page.role }}</p>
+            </div>
+            <div class="portfolio-detail__info-box">
+              <h3>기술 스택</h3>
+              <p>{{ page.tech | join: ", " }}</p>
+            </div>
+          </div>
+
+          <div class="portfolio-detail__content-grid">
+            <div class="portfolio-detail__section">
+              <h3>핵심 기능</h3>
+              <ul>
+                {% for item in page.features %}
+                  <li>{{ item }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="portfolio-detail__section">
+              <h3>담당 작업</h3>
+              <ul>
+                {% for item in page.tasks %}
+                  <li>{{ item }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+
+          {% if page.github != "" %}
+          <div class="portfolio-detail__links">
+            <a href="{{ page.github }}" target="_blank" rel="noopener noreferrer" class="portfolio-detail__btn">
+              GitHub 보기
+            </a>
+          </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </main>
+
+    {% include footer.html %}
+
+  </body>
+
+</html>

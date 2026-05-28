@@ -1,0 +1,22 @@
+<div class="portfolio-card">
+  <a href="{{ project.url | relative_url }}" class="portfolio-card__link">
+    <div class="portfolio-card__thumb">
+      {% if project.logo %}
+        <img src="{{ '/assets/img/portfolio/' | append: project.logo | relative_url }}" alt="{{ project.title }} 로고" class="portfolio-card__logo">
+      {% else %}
+        <div class="portfolio-card__logo-placeholder">{{ project.order | prepend: '0' | slice: -2, 2 }}</div>
+      {% endif %}
+    </div>
+    <div class="portfolio-card__body">
+      <h2 class="portfolio-card__title">{{ project.title }}</h2>
+      <p class="portfolio-card__subtitle">{{ project.subtitle }}</p>
+      <p class="portfolio-card__period">{{ project.period }}</p>
+      <p class="portfolio-card__description">{{ project.description }}</p>
+      <div class="portfolio-card__tech">
+        {% for t in project.tech %}
+          <span class="portfolio-card__badge">{{ t }}</span>
+        {% endfor %}
+      </div>
+    </div>
+  </a>
+</div>

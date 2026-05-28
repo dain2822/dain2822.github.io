@@ -31,15 +31,13 @@ layout: compress
     </div>
 
     <main class="site__content">
-      <section class="blog">
+      <section class="portfolio-section">
         <div class="container">
-          <div class="post-list" itemscope="" itemtype="http://schema.org/Blog">
-
-            {% for post in site.posts %}
-              {% include card.html %}
+          <div class="portfolio-grid">
+            {% assign sorted_portfolio = site.portfolio | sort: "order" %}
+            {% for project in sorted_portfolio %}
+              {% include portfolio-card.html %}
             {% endfor %}
-
-            <!-- {% include pagination.html %} -->
           </div>
         </div>
       </section>
