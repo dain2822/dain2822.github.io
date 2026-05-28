@@ -2,37 +2,118 @@
 layout: compress
 ---
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en-US" }}">
+<html lang="{{ page.lang | default: site.lang | default: "ko" }}">
 
   {% include head.html %}
 
   <body class="site">
 
     {% if site.google_tag_manager %}
-
-      <!-- Google Tag Manager (noscript) -->
       <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.google_tag_manager }}"
       height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-      <!-- End Google Tag Manager (noscript) -->
-
     {% endif %}
 
-    {% include header.html %}
-
-    <div class="hero lazyload" data-bg="{{ site.url }}{{ site.baseurl }}/assets/img/{{ site.hero_img }}">
-      <div class="hero__wrap">
-        <h1 class="hero__title">{{ site.title | escape }}</h1>
-        <div class="hero__meta">
+    <!-- HERO -->
+    <div class="sp-hero lazyload" data-bg="{{ site.url }}{{ site.baseurl }}/assets/img/{{ site.hero_img }}">
+      <div class="sp-hero__overlay"></div>
+      <div class="sp-hero__wrap">
+        <h1 class="sp-hero__title"><strong>파도</strong>처럼 배우는 개발자</h1>
+        <div class="sp-hero__taglines">
           {% for line in site.tagline %}
-            <p class="hero__tagline-line" style="animation-delay: {{ forloop.index | times: 1.7 }}s">{{ line }}</p>
+            <p class="sp-hero__tagline" style="animation-delay: {{ forloop.index | times: 0.5 }}s">{{ line }}</p>
           {% endfor %}
         </div>
       </div>
     </div>
 
+    <!-- STICKY NAV (히어로 아래 위치, 스크롤 시 상단에 고정) -->
+    <nav class="sticky-nav" id="sticky-nav" aria-label="주요 내비게이션">
+      <div class="sticky-nav__inner">
+        <a class="sticky-nav__logo" href="{{ '/' | relative_url }}">
+          <img src="{{ '/assets/img/logo1.png' | relative_url }}" alt="{{ site.title }}" class="sticky-nav__logo-img">
+        </a>
+        <div class="sticky-nav__links" id="sticky-nav-links">
+          {% for item in site.navigation %}
+            <a class="sticky-nav__link" href="{{ item.link }}" itemprop="url">{{ item.name }}</a>
+          {% endfor %}
+        </div>
+        <button class="sticky-nav__toggle" id="sticky-nav-toggle" aria-label="메뉴 열기" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
     <main class="site__content">
-      <section class="portfolio-section">
+
+      <!-- ABOUT -->
+      <section id="about" class="sp-section sp-section--white">
         <div class="container">
+          <h2 class="sp-section__title">About</h2>
+          <div class="sp-about__photo-wrap">
+            <img src="{{ '/assets/img/profile.jpg' | relative_url }}" alt="심다인" class="sp-about__photo">
+          </div>
+          <div class="sp-about-grid">
+            <div class="sp-about__intro">
+              {% for line in site.about.intro %}
+                <p>{{ line }}</p>
+              {% endfor %}
+              <div class="sp-about__contact">
+                {% if site.github_username %}
+                <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener" class="sp-about__contact-link">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                  github.com/{{ site.github_username }}
+                </a>
+                {% endif %}
+                {% if site.email %}
+                <a href="mailto:{{ site.email }}" class="sp-about__contact-link">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+                  {{ site.email }}
+                </a>
+                {% endif %}
+              </div>
+            </div>
+            <div class="sp-about__sidebar">
+              <div class="sp-about__block">
+                <h3 class="sp-about__block-title">학력 및 교육사항</h3>
+                {% for item in site.about.education %}
+                <div class="sp-timeline-item">
+                  <span class="sp-timeline-item__year">{{ item.year }}</span>
+                  <span class="sp-timeline-item__content">{{ item.content }}</span>
+                </div>
+                {% endfor %}
+              </div>
+              <div class="sp-about__block">
+                <h3 class="sp-about__block-title">수상 및 자격사항</h3>
+                {% for item in site.about.awards %}
+                <div class="sp-timeline-item">
+                  <span class="sp-timeline-item__year">{{ item.year }}</span>
+                  <span class="sp-timeline-item__content">{{ item.content }}</span>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills" class="sp-section sp-section--white">
+        <div class="container">
+          <h2 class="sp-section__title">Skills</h2>
+          <div class="sp-skills">
+            {% for skill in site.skills %}
+              <span class="sp-skill-badge">{{ skill }}</span>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="sp-section sp-section--white">
+        <div class="container">
+          <h2 class="sp-section__title">Projects</h2>
           <div class="portfolio-grid">
             {% assign sorted_portfolio = site.portfolio | sort: "order" %}
             {% for project in sorted_portfolio %}
@@ -41,9 +122,30 @@ layout: compress
           </div>
         </div>
       </section>
+
     </main>
 
     {% include footer.html %}
+
+    <script>
+      (function() {
+        var toggle = document.getElementById('sticky-nav-toggle');
+        var links = document.getElementById('sticky-nav-links');
+        if (!toggle || !links) return;
+        toggle.addEventListener('click', function() {
+          var open = links.classList.toggle('open');
+          toggle.classList.toggle('open', open);
+          toggle.setAttribute('aria-expanded', open);
+        });
+        links.querySelectorAll('.sticky-nav__link').forEach(function(a) {
+          a.addEventListener('click', function() {
+            links.classList.remove('open');
+            toggle.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      })();
+    </script>
 
   </body>
 

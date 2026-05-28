@@ -10,66 +10,114 @@ layout: compress
 
     {% include header.html %}
 
-    <div class="hero--small dark-bg">
-      <div class="hero__wrap">
-        <p class="portfolio-detail__number">{{ page.order | prepend: '0' | slice: -2, 2 }}</p>
-        <h1 class="hero__title">{{ page.title }}</h1>
-        <p class="hero__meta">{{ page.subtitle }}</p>
+    <div class="pd-hero">
+      <div class="pd-hero__wrap">
+        <h1 class="pd-hero__title">{{ page.title }}</h1>
+        <p class="pd-hero__subtitle">{{ page.subtitle }}</p>
+        <span class="pd-hero__period">{{ page.period }}</span>
       </div>
     </div>
 
     <main class="site__content">
       <div class="container">
-        <div class="portfolio-detail">
+        <div class="pd-body">
 
-          <div class="portfolio-detail__info-grid">
-            <div class="portfolio-detail__info-box">
-              <h3>개발 인원 및 기간</h3>
-              <p>인원 : {{ page.team }}</p>
-              <p>기간 : {{ page.period }}</p>
+          <!-- 정보 3열 박스 -->
+          <div class="pd-info-grid">
+            <div class="pd-info-box">
+              <div class="pd-info-box__label">개발 인원 및 기간</div>
+              <p>{{ page.team }}</p>
+              <p>{{ page.period }}</p>
             </div>
-            <div class="portfolio-detail__info-box">
-              <h3>담당 역할</h3>
+            <div class="pd-info-box">
+              <div class="pd-info-box__label">담당 역할</div>
               <p>{{ page.role }}</p>
             </div>
-            <div class="portfolio-detail__info-box">
-              <h3>기술 스택</h3>
-              <p>{{ page.tech | join: ", " }}</p>
+            <div class="pd-info-box">
+              <div class="pd-info-box__label">기술 스택</div>
+              <div class="pd-tech-badges">
+                {% for t in page.tech %}
+                  <span class="pd-tech-badge">{{ t }}</span>
+                {% endfor %}
+              </div>
             </div>
           </div>
 
-          <div class="portfolio-detail__content-grid">
-            <div class="portfolio-detail__section">
-              <h3>핵심 기능</h3>
-              <ul>
+          <!-- 핵심기능 + 담당작업 2열 -->
+          <div class="pd-content-grid">
+            <div class="pd-section">
+              <h2 class="pd-section__title">핵심 기능</h2>
+              <ul class="pd-list">
                 {% for item in page.features %}
-                  <li>{{ item }}</li>
+                  <li class="pd-list__item">{{ item }}</li>
                 {% endfor %}
               </ul>
             </div>
-            <div class="portfolio-detail__section">
-              <h3>담당 작업</h3>
-              <ul>
+            <div class="pd-section">
+              <h2 class="pd-section__title">담당 작업</h2>
+              <ul class="pd-list">
                 {% for item in page.tasks %}
-                  <li>{{ item }}</li>
+                  <li class="pd-list__item">{{ item }}</li>
                 {% endfor %}
               </ul>
             </div>
           </div>
 
-          {% if page.github != "" %}
-          <div class="portfolio-detail__links">
-            <a href="{{ page.github }}" target="_blank" rel="noopener noreferrer" class="portfolio-detail__btn">
-              GitHub 보기
-            </a>
+          <!-- 스크린샷 갤러리 (images가 있을 때만 표시) -->
+          {% if page.images %}
+          <div class="pd-gallery">
+            <h2 class="pd-section__title">스크린샷</h2>
+            <div class="pd-gallery__grid">
+              {% for img in page.images %}
+                <figure class="pd-gallery__item">
+                  <img src="{{ '/assets/img/portfolio/' | append: img | relative_url }}" alt="{{ page.title }} 화면">
+                </figure>
+              {% endfor %}
+            </div>
           </div>
           {% endif %}
+
+          <!-- 버튼 -->
+          <div class="pd-actions">
+            {% if page.github != "" %}
+            <a href="{{ page.github }}" target="_blank" rel="noopener noreferrer" class="pd-btn pd-btn--primary">
+              GitHub 보기
+            </a>
+            {% endif %}
+            <a href="{{ '/' | relative_url }}" class="pd-btn pd-btn--secondary">← 목록으로</a>
+          </div>
 
         </div>
       </div>
     </main>
 
     {% include footer.html %}
+
+    <script>
+      (function() {
+        var nav = document.getElementById('sp-nav');
+        var toggle = document.getElementById('sp-nav-toggle');
+        var links = nav.querySelector('.sp-nav__links');
+
+        window.addEventListener('scroll', function() {
+          nav.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+
+        toggle.addEventListener('click', function() {
+          var open = links.classList.toggle('open');
+          toggle.classList.toggle('open', open);
+          toggle.setAttribute('aria-expanded', open);
+        });
+
+        links.querySelectorAll('.sp-nav__link').forEach(function(a) {
+          a.addEventListener('click', function() {
+            links.classList.remove('open');
+            toggle.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      })();
+    </script>
 
   </body>
 

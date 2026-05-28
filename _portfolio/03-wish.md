@@ -23,6 +23,9 @@ tasks:
   - "AI 채점 서비스(FastAPI) 프론트 연동"
   - "화면 녹화, 가이드 영상 확대/자동종료 구현"
   - "전체 맵 구현 및 충돌 시스템: 마을 + 5개 테마 씬 전담"
+images:           # assets/img/portfolio/ 에 저장 후 파일명 기재, 없으면 이 줄 전체 삭제
+  # - "wish-screen1.png"
+  # - "wish-screen2.png"
 logo: "wish-logo.png"
 github: ""
 order: 3

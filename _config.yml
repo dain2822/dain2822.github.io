@@ -13,10 +13,45 @@ social:
     - https://github.com/dain2822
 
 # THEME SETTINGS
-navigation: # Navigation links
-  - {name: 'Home', link: '/'}
-  - {name: 'About', link: '/about'}
-  - {name: 'Contact', link: '/contact'}
+navigation:
+  - {name: 'About', link: '#about'}
+  - {name: 'Skills', link: '#skills'}
+  - {name: 'Projects', link: '#projects'}
+
+about:
+  intro: 
+  - "파도는 장애물 앞에서 멈추지 않고 형태를 바꾸며 앞으로 나아갑니다."
+  - "저 또한 새로운 기술과 환경 앞에서 유연하게 적응하며 맡은 기능을 끝까지 완성해왔습니다."
+  - "벽에 부딪혀 깨어져도 계속해서 부딪치는 파도처럼, 실패에 주저하지 않고 끊임없이 배우며 앞으로 나아가겠습니다."
+  education:
+    - year: "2022.02"
+      content: "경상국립대학교 해양경찰시스템학과 졸업"
+    - year: "2024.11"
+      content: "빅테크 기업(Saltlux)과 함께하는 취업 연계 프로그램"
+    - year: "2025.07 ~ 2025.12"
+      content: "SSAFY(삼성청년소프트웨어아카데미) 1학기 수료 완료"
+    - year: "2026.01 ~"
+      content: "SSAFY(삼성청년소프트웨어아카데미) 2학기 (6월 수료 예정)"
+  awards:
+    - year: "2024.11"
+      content: "AI 테크데이 해커톤 경진대회 최우수 수상"
+    - year: "2024.11"
+      content: "ADsP (데이터분석준전문가)"
+    - year: "2025.03"
+      content: "TOEIC SPEAKING AL등급"
+
+skills:
+  - Python
+  - JavaScript
+  - TypeScript
+  - React
+  - React Native
+  - Kotlin
+  - Java
+  - Django
+  - Spring Boot
+  - Git
+  - Jira
 
 tagline:
   - "파도는 장애물 앞에서 멈추지 않고 형태를 바꾸며 앞으로 나아갑니다."

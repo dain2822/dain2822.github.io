@@ -25,6 +25,9 @@ tasks:
   - "STOMP WebSocket 수업 이벤트 송수신·알림 연동"
   - "교사용 수업·시간표·학급 관리 화면 + API 연동"
   - "자동 로그인/재입장, 통계 페이지 구현"
+images:           # assets/img/portfolio/ 에 저장 후 파일명 기재, 없으면 이 줄 전체 삭제
+  # - "eoleumddaeng-screen1.png"
+  # - "eoleumddaeng-screen2.png"
 logo: "eoleumddaeng-logo.png"
 github: ""
 order: 1

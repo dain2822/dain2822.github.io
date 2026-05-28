@@ -24,6 +24,9 @@ tasks:
   - "소셜 산책 FE+BE 전담: 주변 반려견 탐색·제안·피드백"
   - "앱 전체 DI(Hilt), Retrofit, Navigation 초기 설계"
   - "Wear OS 워치 모듈 초기 세팅"
+images:           # assets/img/portfolio/ 에 저장 후 파일명 기재, 없으면 이 줄 전체 삭제
+  # - "daengdong-screen1.png"
+  # - "daengdong-screen2.png"
 logo: "daengdong-logo.png"
 github: ""
 order: 2
